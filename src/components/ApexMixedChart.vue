@@ -103,4 +103,13 @@ const props = withDefaults(
 );
 </script>
 
-<style scoped></style>
+<style scoped>
+.box-mixedChart {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 290px;
+  width: 100%;
+  padding: 16px;
+}
+</style>
