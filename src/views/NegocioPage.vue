@@ -39,7 +39,9 @@
         <!-- 🔵 Fila 2: 2 Columnas -->
         <ion-row class="ion-row-2">
           <ion-col size="12" size-lg="9">
-            <div class="box">Columna Grande</div>
+            <div class="box">
+              <ApexMixedChart :series="dataMixedChartSeries" />
+            </div>
           </ion-col>
           <ion-col size="12" size-lg="3">
             <div class="box">Columna Pequeña</div>
@@ -74,6 +76,7 @@ import {
   IonCol,
 } from "@ionic/vue";
 import SparkLine from "@/components/SparkLine.vue";
+import ApexMixedChart from "@/components/ApexMixedChart.vue";
 import { ref } from "vue";
 
 const sparkData1 = ref({
