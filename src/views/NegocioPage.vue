@@ -53,7 +53,13 @@
         <!-- 🟠 Fila 3: 2 Columnas -->
         <ion-row class="ion-row-3">
           <ion-col size="12" size-lg="6">
-            <div class="box">Columna 1</div>
+            <div class="box">
+              <EchartsMap
+                :data="dataDownloadsEU"
+                title="Descargas UE"
+                subtitle="KPI: 8 Países > 1K"
+              />
+            </div>
           </ion-col>
           <ion-col size="12" size-lg="6">
             <div class="box">Columna 2</div>
@@ -80,6 +86,7 @@ import {
 import SparkLine from "@/components/SparkLine.vue";
 import ApexMixedChart from "@/components/ApexMixedChart.vue";
 import EchartsGauge from "@/components/EchartsGauge.vue";
+import EchartsMap from "@/components/EchartsMap.vue";
 import { ref } from "vue";
 
 const sparkData1 = ref({
@@ -129,6 +136,17 @@ const dataMixedChartSeries = ref([
 
 // 🧭 Data: EchartsGauge
 const dataGauge = ref(70);
+
+// 🌎 Data: EchartsMap - GEOMAPS
+const dataDownloadsEU = ref([
+  { name: "Germany", value: 15000 },
+  { name: "France", value: 12000 },
+  { name: "Spain", value: 16000 },
+  { name: "Italy", value: 9000 },
+  { name: "Netherlands", value: 8000 },
+  { name: "Poland", value: 7500 },
+  { name: "Portugal", value: 3000 },
+]);
 </script>
 
 <style scoped>
