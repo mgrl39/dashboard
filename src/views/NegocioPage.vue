@@ -74,6 +74,33 @@ import {
   IonCol,
 } from "@ionic/vue";
 import SparkLine from "@/components/SparkLine.vue";
+import { ref } from "vue";
+
+const sparkData1 = ref({
+  /* Propiedades del componente */
+  title: "CLICKS",
+  value: "1234",
+  bgColor: "gradient-blue",
+  textColor: "white",
+  iconName: "navigate-outline",
+  /* Propiedades del componentes interno de ApexChart */
+  chartOptions: {
+    chart: {
+      id: "clicks",
+      type: "area",
+      sparkline: { enabled: true },
+      dropShadow: { enabled: true, top: 1, left: 1, blur: 2, opacity: 0.5 },
+    },
+    stroke: { curve: "smooth", width: 3 },
+    colors: ["#fff"],
+    tooltip: {
+      theme: "dark",
+      x: { show: false },
+      y: { title: { formatter: () => "" } },
+    },
+  },
+  chartSeries: [{ data: [25, 66, 41, 59, 25, 44, 12, 36, 9, 21] }],
+});
 </script>
 
 <style scoped>
