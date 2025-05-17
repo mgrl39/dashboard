@@ -44,7 +44,9 @@
             </div>
           </ion-col>
           <ion-col size="12" size-lg="3">
-            <div class="box">Columna Pequeña</div>
+            <div class="box">
+              <EchartsGauge :value="dataGauge" title="DESCARGAS" />
+            </div>
           </ion-col>
         </ion-row>
 
@@ -77,6 +79,7 @@ import {
 } from "@ionic/vue";
 import SparkLine from "@/components/SparkLine.vue";
 import ApexMixedChart from "@/components/ApexMixedChart.vue";
+import EchartsGauge from "@/components/EchartsGauge.vue";
 import { ref } from "vue";
 
 const sparkData1 = ref({
@@ -123,6 +126,9 @@ const dataMixedChartSeries = ref([
     data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
   },
 ]);
+
+// 🧭 Data: EchartsGauge
+const dataGauge = ref(70);
 </script>
 
 <style scoped>
