@@ -22,7 +22,7 @@
         <ion-row class="ion-row-1">
           <ion-col size="6" size-lg="3">
             <div class="box">
-              <div class="box">Columna 1</div>
+              <spark-line v-bind="sparkData1" />
             </div>
           </ion-col>
           <ion-col size="6" size-lg="3">
