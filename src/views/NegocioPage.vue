@@ -128,11 +128,13 @@ const dataMixedChartSeries = ref([
 <style scoped>
 ion-row {
   overflow: hidden;
+  /*border: 1px solid red;*/
 }
 
 ion-col {
   max-height: 100%;
   --ion-grid-column-padding: 10px;
+  /*background-color: blue;*/
 }
 
 /* El contenido real de cada columna */
@@ -143,8 +145,9 @@ ion-col {
   overflow: hidden;
   border-radius: 5px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: center;
 }
 
 /* Aplicar altura total y por filas, solo en pantallas ≥ md */
