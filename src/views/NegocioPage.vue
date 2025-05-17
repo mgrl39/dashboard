@@ -101,6 +101,25 @@ const sparkData1 = ref({
   },
   chartSeries: [{ data: [25, 66, 41, 59, 25, 44, 12, 36, 9, 21] }],
 });
+
+// 📊 Data: ApexMixedChart
+const dataMixedChartSeries = ref([
+  {
+    name: "Column",
+    type: "column",
+    data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+  },
+  {
+    name: "Area",
+    type: "area",
+    data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+  },
+  {
+    name: "line",
+    type: "line",
+    data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+  },
+]);
 </script>
 
 <style scoped>
