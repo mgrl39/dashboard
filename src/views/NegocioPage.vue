@@ -22,17 +22,23 @@
         <ion-row class="ion-row-1">
           <ion-col size="6" size-lg="3">
             <div class="box">
-              <spark-line v-bind="sparkData1" />
+              <spark-line v-bind="sparkDataClicks" />
             </div>
           </ion-col>
           <ion-col size="6" size-lg="3">
-            <div class="box">Columna 2</div>
+            <div class="box">
+              <spark-line v-bind="sparkDataViews" />
+            </div>
           </ion-col>
           <ion-col size="6" size-lg="3">
-            <div class="box">Columna 3</div>
+            <div class="box">
+              <spark-line v-bind="sparkDataLeads" />
+            </div>
           </ion-col>
           <ion-col size="6" size-lg="3">
-            <div class="box">Columna 4</div>
+            <div class="box">
+              <spark-line v-bind="sparkDataSales" />
+            </div>
           </ion-col>
         </ion-row>
 
@@ -89,14 +95,13 @@ import EchartsGauge from "@/components/EchartsGauge.vue";
 import EchartsMap from "@/components/EchartsMap.vue";
 import { ref } from "vue";
 
-const sparkData1 = ref({
-  /* Propiedades del componente */
+// SparkLine data for Clicks (blue)
+const sparkDataClicks = ref({
   title: "CLICKS",
   value: "1234",
   bgColor: "gradient-blue",
   textColor: "white",
   iconName: "navigate-outline",
-  /* Propiedades del componentes interno de ApexChart */
   chartOptions: {
     chart: {
       id: "clicks",
@@ -113,6 +118,81 @@ const sparkData1 = ref({
     },
   },
   chartSeries: [{ data: [25, 66, 41, 59, 25, 44, 12, 36, 9, 21] }],
+});
+
+// SparkLine data for Views (lilac)
+const sparkDataViews = ref({
+  title: "VIEWS",
+  value: "1982",
+  bgColor: "gradient-purple",
+  textColor: "white",
+  iconName: "eye-outline",
+  chartOptions: {
+    chart: {
+      id: "views",
+      type: "area",
+      sparkline: { enabled: true },
+      dropShadow: { enabled: true, top: 1, left: 1, blur: 2, opacity: 0.5 },
+    },
+    stroke: { curve: "smooth", width: 3 },
+    colors: ["#fff"],
+    tooltip: {
+      theme: "dark",
+      x: { show: false },
+      y: { title: { formatter: () => "" } },
+    },
+  },
+  chartSeries: [{ data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51] }],
+});
+
+// SparkLine data for Leads (orange)
+const sparkDataLeads = ref({
+  title: "LEADS",
+  value: "2011",
+  bgColor: "gradient-orange",
+  textColor: "white",
+  iconName: "people-outline",
+  chartOptions: {
+    chart: {
+      id: "leads",
+      type: "area",
+      sparkline: { enabled: true },
+      dropShadow: { enabled: true, top: 1, left: 1, blur: 2, opacity: 0.5 },
+    },
+    stroke: { curve: "smooth", width: 3 },
+    colors: ["#fff"],
+    tooltip: {
+      theme: "dark",
+      x: { show: false },
+      y: { title: { formatter: () => "" } },
+    },
+  },
+  chartSeries: [{ data: [41, 29, 35, 42, 19, 32, 45, 22, 31, 38] }],
+});
+
+// SparkLine data for Sales (green)
+const sparkDataSales = ref({
+  title: "SALES",
+  value: "€627K",
+  bgColor: "gradient-green",
+  textColor: "white",
+  iconName: "cash-outline",
+  chartOptions: {
+    chart: {
+      id: "sales",
+      type: "area",
+      sparkline: { enabled: true },
+      dropShadow: { enabled: true, top: 1, left: 1, blur: 2, opacity: 0.5 },
+    },
+    stroke: { curve: "smooth", width: 3 },
+    colors: ["#fff"],
+    tooltip: {
+      theme: "dark",
+      x: { show: false },
+      y: { title: { formatter: () => "" } },
+    },
+  },
+  chartSeries: [{ data: [18, 30, 36, 32, 40, 26, 35, 40, 38, 46] }],
 });
 
 // 📊 Data: ApexMixedChart
