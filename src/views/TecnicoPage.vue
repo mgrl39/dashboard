@@ -58,27 +58,7 @@
 
         <!-- 🟠 Fila 3: 3 Columnas -->
         <ion-row class="ion-row-3">
-          <ion-col size="12" size-lg="4.5">
-            <div class="box">
-              <ChartJSLineAreaRT
-                chartType="line"
-                title="Carga CPU"
-                color="#10b981"
-              />
-            </div>
-          </ion-col>
-          <ion-col size="12" size-lg="4.5">
-            <div class="box">
-              <ChartJSLineAreaRT
-                chartType="area"
-                title="Memoria"
-                color="#3b82f6"
-                :min="50"
-                :max="70"
-              />
-            </div>
-          </ion-col>
-          <ion-col size="12" size-lg="3">
+          <ion-col size="12" size-lg="12">
             <div class="box">
               <EchartsGaugeMultiple :segments="ringSegments" />
             </div>
@@ -113,9 +93,6 @@ import ApexLineRT from "@/components/ApexLineRT.vue";
 // Echarts
 import EchartsGauge from "@/components/EchartsGauge.vue";
 import EchartsGaugeMultiple from "@/components/EchartsGaugeMultiple.vue";
-
-// ChartJS
-import ChartJSLineAreaRT from "@/components/ChartJSLineAreaRT.vue";
 
 /***** 🛠️ CONSTANTES y VARIABLES *****/
 
