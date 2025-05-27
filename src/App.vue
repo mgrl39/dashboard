@@ -4,8 +4,17 @@
       <ion-menu content-id="main-content" type="overlay">
         <ion-content>
           <ion-list id="inbox-list">
-            <ion-list-header>Dashboard</ion-list-header>
-            <ion-note>Data Visualization</ion-note>
+            <div class="logo-container">
+              <img
+                src="@/assets/PuigSoundsLogo.png"
+                alt="PuigSounds Logo"
+                class="app-logo"
+              />
+              <div class="title-container">
+                <h1 class="app-title">PuigSounds</h1>
+                <ion-note>Institut Puig Castellar</ion-note>
+              </div>
+            </div>
 
             <ion-menu-toggle
               :auto-hide="false"
@@ -110,6 +119,55 @@ watch(route, updateSelectedIndex);
 <style scoped>
 ion-split-pane {
   --side-max-width: 280px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+}
+
+.app-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(151, 9, 44, 0.3));
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #f4f4f4;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #97092c;
+  transform: translateX(-100%);
+  animation: slideIn 1.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+  }
 }
 
 ion-menu ion-content {
