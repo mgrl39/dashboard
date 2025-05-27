@@ -54,7 +54,9 @@
             </div>
           </ion-col>
           <ion-col size="12" size-lg="6">
-            <div class="box">Columna 2</div>
+            <div class="box">
+              <ApexHeatMap />
+            </div>
           </ion-col>
         </ion-row>
 
@@ -93,6 +95,7 @@ import SparkLine from "@/components/SparkLine.vue";
 import ApexMixedChart from "@/components/ApexMixedChart.vue";
 import EchartsGauge from "@/components/EchartsGauge.vue";
 import EchartsMap from "@/components/EchartsMap.vue";
+import ApexHeatMap from "@/components/ApexHeatMap.vue";
 import { ref } from "vue";
 
 // SparkLine data for Daily Participation (blue)

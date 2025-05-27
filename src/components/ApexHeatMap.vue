@@ -1,20 +1,50 @@
 <template>
   <div class="chart-container">
-    <apexchart
+    <VueApexCharts
       type="heatmap"
       height="100%"
       :options="chartOptions"
       :series="series"
-    ></apexchart>
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import VueApexCharts from "vue3-apexcharts";
-import apexData from "../../data/apex-data.json";
 
-const series = ref(apexData.heatmap.series);
+// Datos que representan los votos únicos diarios por franja horaria
+const series = ref([
+  {
+    name: "Lunes",
+    data: [85, 145, 178, 123, 189, 56, 24],
+  },
+  {
+    name: "Martes",
+    data: [76, 158, 167, 134, 176, 45, 23],
+  },
+  {
+    name: "Miércoles",
+    data: [67, 163, 189, 145, 171, 67, 25],
+  },
+  {
+    name: "Jueves",
+    data: [84, 149, 156, 132, 168, 54, 22],
+  },
+  {
+    name: "Viernes",
+    data: [73, 147, 165, 129, 156, 42, 18],
+  },
+  {
+    name: "Sábado",
+    data: [15, 27, 19, 18, 16, 15, 14],
+  },
+  {
+    name: "Domingo",
+    data: [14, 26, 18, 17, 15, 14, 13],
+  },
+]);
+
 const chartOptions = ref({
   chart: {
     type: "heatmap",
@@ -22,17 +52,21 @@ const chartOptions = ref({
     toolbar: {
       show: false,
     },
+    background: "transparent",
   },
   dataLabels: {
     enabled: false,
   },
-  colors: ["#0063F7"],
+  theme: {
+    mode: "dark",
+  },
   title: {
-    text: "Mapa de Calor de Actividad del Cliente",
+    text: "Distribución de Votos Diarios",
     align: "left",
     style: {
-      fontSize: "14px",
-      fontWeight: "normal",
+      fontSize: "16px",
+      fontWeight: "600",
+      color: "#f4f4f4",
     },
   },
   plotOptions: {
@@ -44,52 +78,56 @@ const chartOptions = ref({
         ranges: [
           {
             from: 0,
-            to: 30,
-            name: "Bajo",
-            color: "#B4E0A7",
+            to: 50,
+            name: "Baja",
+            color: "#97092c",
           },
           {
-            from: 31,
-            to: 60,
-            name: "Medio",
-            color: "#5CCB58",
-          },
-          {
-            from: 61,
+            from: 51,
             to: 100,
-            name: "Alto",
-            color: "#1AA053",
+            name: "Media",
+            color: "#640e22",
           },
           {
             from: 101,
             to: 150,
-            name: "Muy Alto",
-            color: "#0A6634",
+            name: "Alta",
+            color: "#561524",
+          },
+          {
+            from: 151,
+            to: 200,
+            name: "Muy Alta",
+            color: "#38101a",
           },
         ],
       },
     },
   },
   xaxis: {
-    categories: ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm"],
+    categories: ["8:30", "10:30", "12:30", "14:30", "15:30", "17:00", "18:00"],
     labels: {
       style: {
-        colors: "#9aa0ac",
+        colors: "#f4f4f4",
       },
     },
   },
   yaxis: {
     labels: {
       style: {
-        colors: "#9aa0ac",
+        colors: "#f4f4f4",
       },
     },
   },
-  stroke: {
-    width: 1,
-  },
   tooltip: {
-    theme: "light",
+    theme: "dark",
+    y: {
+      title: {
+        formatter: function (value: string): string {
+          return "Votos: ";
+        },
+      },
+    },
   },
 });
 </script>
@@ -98,5 +136,13 @@ const chartOptions = ref({
 .chart-container {
   width: 100%;
   height: 100%;
+  padding: 1rem;
+}
+
+.chart-title {
+  color: #f4f4f4;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 </style>
