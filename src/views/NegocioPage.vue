@@ -42,22 +42,8 @@
           </ion-col>
         </ion-row>
 
-        <!-- 🔵 Fila 2: 2 Columnas -->
+        <!-- �� Fila 2: 2 Columnas (antes era fila 3) -->
         <ion-row class="ion-row-2">
-          <ion-col size="12" size-lg="9">
-            <div class="box">
-              <ApexMixedChart :series="dataMixedChartSeries" />
-            </div>
-          </ion-col>
-          <ion-col size="12" size-lg="3">
-            <div class="box">
-              <EchartsGauge :value="dataGauge" title="DESCARGAS" />
-            </div>
-          </ion-col>
-        </ion-row>
-
-        <!-- 🟠 Fila 3: 2 Columnas -->
-        <ion-row class="ion-row-3">
           <ion-col size="12" size-lg="6">
             <div class="box">
               <EchartsMap
@@ -69,6 +55,20 @@
           </ion-col>
           <ion-col size="12" size-lg="6">
             <div class="box">Columna 2</div>
+          </ion-col>
+        </ion-row>
+
+        <!-- 🟠 Fila 3: 2 Columnas (antes era fila 2) -->
+        <ion-row class="ion-row-3">
+          <ion-col size="12" size-lg="3">
+            <div class="box">
+              <EchartsGauge :value="dataGauge" title="DESCARGAS" />
+            </div>
+          </ion-col>
+          <ion-col size="12" size-lg="9">
+            <div class="box">
+              <ApexMixedChart :series="dataMixedChartSeries" />
+            </div>
           </ion-col>
         </ion-row>
       </ion-grid>
