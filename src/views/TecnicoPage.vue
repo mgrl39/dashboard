@@ -112,7 +112,7 @@ const sparkData1 = ref({
   value: "178ms",
   bgColor: "gradient-blue",
   textColor: "white",
-  iconName: "timer-outline",
+  iconName: "stats-chart-outline",
   chartOptions: {
     chart: {
       id: "serverResponse",
@@ -132,11 +132,11 @@ const sparkData1 = ref({
 });
 
 const sparkData2 = ref({
-  title: "CPU USAGE",
-  value: "65%",
+  title: "AUTH ERRORS",
+  value: "25%",
   bgColor: "gradient-pink",
   textColor: "white",
-  iconName: "hardware-chip-outline",
+  iconName: "people-outline",
   chartOptions: {
     chart: {
       id: "cpuUsage",
@@ -160,7 +160,7 @@ const sparkData3 = ref({
   value: "98.5%",
   bgColor: "gradient-orange",
   textColor: "white",
-  iconName: "checkmark-circle-outline",
+  iconName: "trophy-outline",
   chartOptions: {
     chart: {
       id: "successRate",
