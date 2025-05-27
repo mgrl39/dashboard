@@ -93,8 +93,35 @@ onUnmounted(() => {
   height: 100%;
   width: 100%;
   padding: 16px;
-  border-radius: 5px;
+  border-radius: 12px;
   container: box / inline-size;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box-sparkline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.15;
+  background: radial-gradient(
+      circle at top right,
+      rgba(255, 255, 255, 0.2),
+      transparent 60%
+    ),
+    linear-gradient(45deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+  z-index: 1;
+}
+
+.box-sparkline:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
 }
 
 .details {
@@ -102,6 +129,8 @@ onUnmounted(() => {
   flex-direction: column;
   align-items: center;
   gap: 5px;
+  position: relative;
+  z-index: 2;
 }
 
 .details > div {
@@ -112,24 +141,41 @@ onUnmounted(() => {
 }
 
 .details > div > ion-icon {
-  font-size: 2rem;
-  --ionicon-stroke-width: 24px;
+  font-size: 2.2rem;
+  --ionicon-stroke-width: 32px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.box-sparkline:hover .details > div > ion-icon {
+  transform: scale(1.1);
 }
 
 .details > div > span {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
+
 .details > span {
   font-size: 2.9rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.8));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .sparkline-chart {
   min-width: 50px;
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 /* Siendo más ancho, pasamos dato a la derecha de título */
-
 @container box (width >= 324px) {
   .details {
     flex-direction: row;
@@ -151,7 +197,6 @@ onUnmounted(() => {
 
 /* 🖥️ En pantallas grandes (>=lg=992) */
 @media (min-width: 992px) {
-  /* Si el componente no es muy ancho: detalles izquierda, datos derecha*/
   @container box (width <= 356px) {
     .details {
       flex-direction: row;
@@ -159,7 +204,6 @@ onUnmounted(() => {
       align-items: start;
       gap: 16px;
     }
-    /* Para anchos de contenedores muy pequeños */
     .details > span {
       font-size: max(1.7rem, 16cqw);
     }
@@ -174,16 +218,38 @@ onUnmounted(() => {
 
 /* 🎨 Colores de fondo */
 .gradient-blue {
-  background-image: linear-gradient(135deg, #071c49 10%, #0396ff 100%);
+  background-image: linear-gradient(135deg, #38101a 0%, #97092c 100%);
+  box-shadow: 0 8px 32px rgba(151, 9, 44, 0.3);
 }
-.gradient-green {
-  background-image: linear-gradient(135deg, #054d43 10%, #6be084 100%);
+
+.gradient-purple {
+  background-image: linear-gradient(
+    165deg,
+    #561524 0%,
+    #38101a 50%,
+    #97092c 100%
+  );
+  box-shadow: 0 8px 32px rgba(86, 21, 36, 0.3);
 }
+
 .gradient-orange {
-  background-image: linear-gradient(135deg, #f31b4a 10%, #e78f30 100%);
+  background-image: linear-gradient(
+    45deg,
+    #640e22 0%,
+    #97092c 50%,
+    #561524 100%
+  );
+  box-shadow: 0 8px 32px rgba(100, 14, 34, 0.3);
 }
-.gradient-pink {
-  background-image: linear-gradient(135deg, #383ead 10%, #ee9ae5 100%);
+
+.gradient-green {
+  background-image: linear-gradient(
+    to right,
+    #38101a 0%,
+    #561524 50%,
+    #640e22 100%
+  );
+  box-shadow: 0 8px 32px rgba(56, 16, 26, 0.3);
 }
 
 .black {
