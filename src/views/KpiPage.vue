@@ -298,15 +298,75 @@ const technicalGoals = ref<SmartGoal[]>([
 </script>
 
 <style scoped>
-ion-accordion.accordion-collapsing ion-item[slot="header"],
-ion-accordion.accordion-collapsed ion-item[slot="header"] {
-  --background: var(--ion-color-light);
-  --color: var(--ion-color-light-contrast);
+/* Estilos base para el contenido */
+ion-content {
+  --background: #38101a;
+  --color: #f4f4f4;
 }
 
+/* Estilos para los títulos */
+h1 {
+  color: #f4f4f4;
+  font-weight: bold;
+}
+
+/* Estilos para los acordeones colapsados */
+ion-accordion.accordion-collapsing ion-item[slot="header"],
+ion-accordion.accordion-collapsed ion-item[slot="header"] {
+  --background: #561524;
+  --color: #f4f4f4;
+}
+
+/* Estilos para los acordeones expandidos */
 ion-accordion.accordion-expanding ion-item[slot="header"],
 ion-accordion.accordion-expanded ion-item[slot="header"] {
-  --background: rgba(var(--ion-color-primary-rgb), 0.14);
-  color: var(--ion-color-primary);
+  --background: #97092c;
+  --color: #f4f4f4;
+}
+
+/* Estilos para el contenido del acordeón */
+ion-accordion div[slot="content"] {
+  background: #640e22;
+  color: #f4f4f4;
+}
+
+/* Estilos para los elementos de la lista */
+ion-list {
+  background: #561524;
+}
+
+ion-item {
+  --background: #561524;
+  --color: #f4f4f4;
+}
+
+/* Estilos para el header */
+ion-header {
+  background: #38101a;
+}
+
+ion-toolbar {
+  --background: #38101a;
+  --color: #f4f4f4;
+}
+
+/* Estilos para los botones del menú */
+ion-menu-button {
+  --color: #f4f4f4;
+}
+
+/* Estilos para el título */
+ion-title {
+  color: #f4f4f4;
+}
+
+/* Ajustes para mejorar la legibilidad */
+b {
+  color: #97092c;
+}
+
+p {
+  color: #f4f4f4;
+  margin: 10px 0;
 }
 </style>

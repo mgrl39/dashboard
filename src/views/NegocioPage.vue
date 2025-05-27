@@ -232,18 +232,16 @@ const dataDownloadsEU = ref([
 <style scoped>
 ion-row {
   overflow: hidden;
-  /*border: 1px solid red;*/
 }
 
 ion-col {
   max-height: 100%;
   --ion-grid-column-padding: 10px;
-  /*background-color: blue;*/
 }
 
 /* El contenido real de cada columna */
 .box {
-  background: #1e1e1e;
+  background: #561524;
   height: 100%;
   max-height: 100%;
   overflow: hidden;
@@ -252,6 +250,32 @@ ion-col {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+/* Estilos base para el contenido */
+ion-content {
+  --background: #38101a;
+  --color: #f4f4f4;
+}
+
+/* Estilos para el header */
+ion-header {
+  background: #38101a;
+}
+
+ion-toolbar {
+  --background: #38101a;
+  --color: #f4f4f4;
+}
+
+/* Estilos para los botones del menú */
+ion-menu-button {
+  --color: #f4f4f4;
+}
+
+/* Estilos para el título */
+ion-title {
+  color: #f4f4f4;
 }
 
 /* Aplicar altura total y por filas, solo en pantallas ≥ md */
