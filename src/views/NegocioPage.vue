@@ -42,7 +42,7 @@
           </ion-col>
         </ion-row>
 
-        <!-- �� Fila 2: 2 Columnas (antes era fila 3) -->
+        <!-- 🟠 Fila 2: 2 Columnas (antes era fila 3) -->
         <ion-row class="ion-row-2">
           <ion-col size="12" size-lg="6">
             <div class="box">
@@ -95,16 +95,16 @@ import EchartsGauge from "@/components/EchartsGauge.vue";
 import EchartsMap from "@/components/EchartsMap.vue";
 import { ref } from "vue";
 
-// SparkLine data for Clicks (blue)
+// SparkLine data for Daily Participation (blue)
 const sparkDataClicks = ref({
-  title: "CLICKS",
-  value: "1234",
+  title: "PARTICIPACIÓN",
+  value: "78%",
   bgColor: "gradient-blue",
   textColor: "white",
-  iconName: "navigate-outline",
+  iconName: "stats-chart-outline",
   chartOptions: {
     chart: {
-      id: "clicks",
+      id: "participation",
       type: "area",
       sparkline: { enabled: true },
       dropShadow: { enabled: true, top: 1, left: 1, blur: 2, opacity: 0.5 },
@@ -117,44 +117,19 @@ const sparkDataClicks = ref({
       y: { title: { formatter: () => "" } },
     },
   },
-  chartSeries: [{ data: [25, 66, 41, 59, 25, 44, 12, 36, 9, 21] }],
+  chartSeries: [{ data: [65, 72, 78, 75, 80, 76, 73, 78, 82, 79] }],
 });
 
-// SparkLine data for Views (lilac)
+// SparkLine data for Active Users (lilac)
 const sparkDataViews = ref({
-  title: "VIEWS",
-  value: "1982",
+  title: "USUARIOS ACTIVOS",
+  value: "+12%",
   bgColor: "gradient-purple",
-  textColor: "white",
-  iconName: "eye-outline",
-  chartOptions: {
-    chart: {
-      id: "views",
-      type: "area",
-      sparkline: { enabled: true },
-      dropShadow: { enabled: true, top: 1, left: 1, blur: 2, opacity: 0.5 },
-    },
-    stroke: { curve: "smooth", width: 3 },
-    colors: ["#fff"],
-    tooltip: {
-      theme: "dark",
-      x: { show: false },
-      y: { title: { formatter: () => "" } },
-    },
-  },
-  chartSeries: [{ data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51] }],
-});
-
-// SparkLine data for Leads (orange)
-const sparkDataLeads = ref({
-  title: "LEADS",
-  value: "2011",
-  bgColor: "gradient-orange",
   textColor: "white",
   iconName: "people-outline",
   chartOptions: {
     chart: {
-      id: "leads",
+      id: "activeUsers",
       type: "area",
       sparkline: { enabled: true },
       dropShadow: { enabled: true, top: 1, left: 1, blur: 2, opacity: 0.5 },
@@ -167,19 +142,19 @@ const sparkDataLeads = ref({
       y: { title: { formatter: () => "" } },
     },
   },
-  chartSeries: [{ data: [41, 29, 35, 42, 19, 32, 45, 22, 31, 38] }],
+  chartSeries: [{ data: [320, 350, 380, 410, 445, 470, 510, 560, 590, 630] }],
 });
 
-// SparkLine data for Sales (green)
-const sparkDataSales = ref({
-  title: "SALES",
-  value: "€627K",
-  bgColor: "gradient-green",
+// SparkLine data for Achievements (orange)
+const sparkDataLeads = ref({
+  title: "LOGROS",
+  value: "65%",
+  bgColor: "gradient-orange",
   textColor: "white",
-  iconName: "cash-outline",
+  iconName: "trophy-outline",
   chartOptions: {
     chart: {
-      id: "sales",
+      id: "achievements",
       type: "area",
       sparkline: { enabled: true },
       dropShadow: { enabled: true, top: 1, left: 1, blur: 2, opacity: 0.5 },
@@ -192,40 +167,65 @@ const sparkDataSales = ref({
       y: { title: { formatter: () => "" } },
     },
   },
-  chartSeries: [{ data: [18, 30, 36, 32, 40, 26, 35, 40, 38, 46] }],
+  chartSeries: [{ data: [45, 48, 52, 55, 58, 62, 63, 65, 67, 65] }],
 });
 
-// 📊 Data: ApexMixedChart
+// SparkLine data for Social Connections (green)
+const sparkDataSales = ref({
+  title: "SEGUIDORES",
+  value: "55%",
+  bgColor: "gradient-green",
+  textColor: "white",
+  iconName: "people-circle-outline",
+  chartOptions: {
+    chart: {
+      id: "followers",
+      type: "area",
+      sparkline: { enabled: true },
+      dropShadow: { enabled: true, top: 1, left: 1, blur: 2, opacity: 0.5 },
+    },
+    stroke: { curve: "smooth", width: 3 },
+    colors: ["#fff"],
+    tooltip: {
+      theme: "dark",
+      x: { show: false },
+      y: { title: { formatter: () => "" } },
+    },
+  },
+  chartSeries: [{ data: [40, 42, 45, 48, 50, 52, 54, 55, 55, 55] }],
+});
+
+// 📊 Data: ApexMixedChart - Género Musical Distribution
 const dataMixedChartSeries = ref([
   {
-    name: "Column",
+    name: "Pop",
     type: "column",
-    data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+    data: [25, 28, 27, 25, 26, 28, 27, 25, 26, 24, 25],
   },
   {
-    name: "Area",
+    name: "Rock",
     type: "area",
-    data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+    data: [22, 24, 23, 25, 22, 20, 21, 23, 24, 25, 23],
   },
   {
-    name: "line",
+    name: "Hip Hop",
     type: "line",
-    data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+    data: [18, 20, 19, 21, 20, 19, 22, 21, 20, 19, 20],
   },
 ]);
 
-// 🧭 Data: EchartsGauge
-const dataGauge = ref(70);
+// 🧭 Data: EchartsGauge - Participación Diaria
+const dataGauge = ref(78);
 
-// 🌎 Data: EchartsMap - GEOMAPS
+// 🌎 Data: EchartsMap - Participación por Clases
 const dataDownloadsEU = ref([
-  { name: "Germany", value: 15000 },
-  { name: "France", value: 12000 },
-  { name: "Spain", value: 16000 },
-  { name: "Italy", value: 9000 },
-  { name: "Netherlands", value: 8000 },
-  { name: "Poland", value: 7500 },
-  { name: "Portugal", value: 3000 },
+  { name: "1º ESO", value: 85 },
+  { name: "2º ESO", value: 82 },
+  { name: "3º ESO", value: 78 },
+  { name: "4º ESO", value: 75 },
+  { name: "1º Bach", value: 70 },
+  { name: "2º Bach", value: 68 },
+  { name: "Ciclos", value: 72 },
 ]);
 </script>
 

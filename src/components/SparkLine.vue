@@ -26,6 +26,9 @@ import {
   eyeOutline,
   peopleOutline,
   cashOutline,
+  statsChartOutline,
+  trophyOutline,
+  peopleCircleOutline,
 } from "ionicons/icons";
 import vapexChart from "vue3-apexcharts";
 import { ref, watchEffect, onUnmounted } from "vue";
@@ -37,6 +40,9 @@ addIcons({
   "eye-outline": eyeOutline,
   "people-outline": peopleOutline,
   "cash-outline": cashOutline,
+  "stats-chart-outline": statsChartOutline,
+  "trophy-outline": trophyOutline,
+  "people-circle-outline": peopleCircleOutline,
 });
 
 // 📌 Definir Props para datos dinámicos
