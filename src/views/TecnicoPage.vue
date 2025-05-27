@@ -22,7 +22,12 @@
         <ion-row class="ion-row-2">
           <ion-col size="12" size-md="3" push-md="9">
             <div class="box">
-              <EchartsGauge :value="currentValue" title="USUARIOS ONLINE" />
+              <EchartsGauge
+                :value="cpuUsage"
+                title="USO DE CPU"
+                :warning-threshold="60"
+                :danger-threshold="70"
+              />
             </div>
           </ion-col>
           <ion-col size="12" size-md="9" pull-md="3">
@@ -179,6 +184,7 @@ const data = ref<{ x: number; y: number }[]>([]);
 const series = ref([{ name: "Usuarios", data: data.value }]);
 
 const currentValue = ref(0);
+const cpuUsage = ref(0);
 const ringSegments = ref([
   { value: 0, name: "🥘 España", color: "#f97316", min: 80, max: 99 },
   { value: 0, name: "🌍 Mundo", color: "#10b981", min: 10, max: 30 },
@@ -196,6 +202,8 @@ function addDataRealTime() {
 
   lastDate = newX;
   currentValue.value = newY;
+
+  cpuUsage.value = Math.floor(Math.random() * 45) + 40;
 
   ringSegments.value.forEach((s) => {
     s.value = Math.floor(Math.random() * (s.max - s.min + 1)) + s.min;
