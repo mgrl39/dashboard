@@ -1,0 +1,43 @@
+{
+  "radar": {
+    "indicator": [
+      { "name": "Pop", "max": 100 },
+      { "name": "Rock", "max": 100 },
+      { "name": "Hip Hop", "max": 100 },
+      { "name": "Electrónica", "max": 100 },
+      { "name": "Jazz", "max": 100 },
+      { "name": "Reggaeton", "max": 100 },
+      { "name": "Clásica", "max": 100 },
+      { "name": "Metal", "max": 100 },
+      { "name": "Indie", "max": 100 },
+      { "name": "R&B", "max": 100 }
+    ],
+    "series": [
+      {
+        "type": "radar",
+        "data": [
+          {
+            "name": "Géneros Más Votados",
+            "value": [85, 70, 75, 65, 45, 80, 40, 55, 60, 50],
+            "lineStyle": {
+              "color": "#97092c"
+            },
+            "areaStyle": {
+              "color": "#640e22"
+            }
+          },
+          {
+            "name": "Géneros Más Escuchados",
+            "value": [75, 65, 80, 70, 35, 85, 30, 45, 55, 60],
+            "lineStyle": {
+              "color": "#561524"
+            },
+            "areaStyle": {
+              "color": "#38101a"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

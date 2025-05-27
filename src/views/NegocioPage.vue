@@ -46,11 +46,7 @@
         <ion-row class="ion-row-2">
           <ion-col size="12" size-lg="6">
             <div class="box">
-              <EchartsMap
-                :data="dataDownloadsEU"
-                title="Descargas UE"
-                subtitle="KPI: 8 Países > 1K"
-              />
+              <RadarChart />
             </div>
           </ion-col>
           <ion-col size="12" size-lg="6">
@@ -64,12 +60,12 @@
         <ion-row class="ion-row-3">
           <ion-col size="12" size-lg="3">
             <div class="box">
-              <EchartsGauge :value="dataGauge" title="DESCARGAS" />
+              <ChartPie />
             </div>
           </ion-col>
           <ion-col size="12" size-lg="9">
             <div class="box">
-              <ApexMixedChart :series="dataMixedChartSeries" />
+              <ChartJsRealtime />
             </div>
           </ion-col>
         </ion-row>
@@ -92,10 +88,10 @@ import {
   IonCol,
 } from "@ionic/vue";
 import SparkLine from "@/components/SparkLine.vue";
-import ApexMixedChart from "@/components/ApexMixedChart.vue";
-import EchartsGauge from "@/components/EchartsGauge.vue";
-import EchartsMap from "@/components/EchartsMap.vue";
 import ApexHeatMap from "@/components/ApexHeatMap.vue";
+import ChartPie from "@/components/ChartPie.vue";
+import RadarChart from "@/components/RadarChart.vue";
+import ChartJsRealtime from "@/components/ChartJsRealtime.vue";
 import { ref } from "vue";
 
 // SparkLine data for Daily Participation (blue)
@@ -216,9 +212,6 @@ const dataMixedChartSeries = ref([
     data: [18, 20, 19, 21, 20, 19, 22, 21, 20, 19, 20],
   },
 ]);
-
-// 🧭 Data: EchartsGauge - Participación Diaria
-const dataGauge = ref(78);
 
 // 🌎 Data: EchartsMap - Participación por Clases
 const dataDownloadsEU = ref([
