@@ -25,9 +25,9 @@ const chartData = computed(() => ({
     {
       data: [15, 75, 10],
       backgroundColor: [
-        "#ef4444", // rojo para errores
-        "#22c55e", // verde para éxitos
-        "#f59e0b", // amarillo para pendientes
+        "#dc2626", // rojo más intenso para errores
+        "#059669", // verde esmeralda para éxitos
+        "#eab308", // amarillo más intenso para pendientes
       ],
       borderWidth: 0,
     },

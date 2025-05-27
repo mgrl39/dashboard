@@ -27,6 +27,7 @@
                 title="USO DE CPU"
                 :warning-threshold="60"
                 :danger-threshold="70"
+                :colors="['#059669', '#eab308', '#dc2626']"
               />
             </div>
           </ion-col>
@@ -61,16 +62,16 @@
           </ion-col>
         </ion-row>
 
-        <!-- 🟠 Fila 3: Gauge múltiple + Doughnut -->
+        <!-- 🟠 Fila 3: Doughnut + ApexLineRT (cambiado el orden) -->
         <ion-row class="ion-row-3">
-          <ion-col size="12" size-lg="8">
-            <div class="box">
-              <EchartsGaugeMultiple :segments="ringSegments" />
-            </div>
-          </ion-col>
           <ion-col size="12" size-lg="4">
             <div class="box">
               <ChartDoughnut />
+            </div>
+          </ion-col>
+          <ion-col size="12" size-lg="8">
+            <div class="box">
+              <EchartsGaugeMultiple :segments="ringSegments" />
             </div>
           </ion-col>
         </ion-row>
