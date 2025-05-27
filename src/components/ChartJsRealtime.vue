@@ -15,6 +15,8 @@ import {
   Title,
   Tooltip,
   Legend,
+  type ChartData,
+  type ChartOptions,
 } from "chart.js";
 import { Line } from "vue-chartjs";
 
@@ -28,7 +30,7 @@ ChartJS.register(
   Legend
 );
 
-const initialData = {
+const initialData: ChartData<"line"> = {
   labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
   datasets: [
     {
@@ -42,9 +44,9 @@ const initialData = {
   ],
 };
 
-const chartData = ref(initialData);
+const chartData = ref<ChartData<"line">>(initialData);
 
-const chartOptions = {
+const chartOptions: ChartOptions<"line"> = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {

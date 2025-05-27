@@ -6,7 +6,6 @@
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { Pie } from "vue-chartjs";
 import {
   Chart as ChartJS,
   Title,
@@ -14,12 +13,15 @@ import {
   Legend,
   ArcElement,
   CategoryScale,
+  type ChartData,
+  type ChartOptions,
 } from "chart.js";
+import { Pie } from "vue-chartjs";
 
 // Register Chart.js components
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
 
-const chartData = computed(() => {
+const chartData = computed<ChartData<"pie">>(() => {
   return {
     labels: ["ESO", "Bachillerato", "Ciclos Formativos"],
     datasets: [
@@ -33,12 +35,12 @@ const chartData = computed(() => {
   };
 });
 
-const chartOptions = {
+const chartOptions: ChartOptions<"pie"> = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      position: "bottom" as "bottom",
+      position: "bottom" as const,
       labels: {
         color: "#f4f4f4",
         boxWidth: 12,
