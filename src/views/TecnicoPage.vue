@@ -108,16 +108,14 @@ let interval: ReturnType<typeof setInterval>;
 
 // Data: SparkLine
 const sparkData1 = ref({
-  /* Propiedades del componente */
-  title: "CLICKS",
-  value: "1234",
+  title: "TIEMPO RESPUESTA",
+  value: "178ms",
   bgColor: "gradient-blue",
   textColor: "white",
-  iconName: "navigate-outline",
-  /* Propiedades del componentes interno de ApexChart */
+  iconName: "timer-outline",
   chartOptions: {
     chart: {
-      id: "clicks",
+      id: "serverResponse",
       type: "area",
       sparkline: { enabled: true },
       dropShadow: { enabled: true, top: 1, left: 1, blur: 2, opacity: 0.5 },
@@ -127,23 +125,21 @@ const sparkData1 = ref({
     tooltip: {
       theme: "dark",
       x: { show: false },
-      y: { title: { formatter: () => "" } },
+      y: { title: { formatter: () => "ms" } },
     },
   },
-  chartSeries: [{ data: [25, 66, 41, 59, 25, 44, 12, 36, 9, 21] }],
+  chartSeries: [{ data: [180, 195, 150, 170, 165, 155, 185, 160, 175, 178] }],
 });
 
 const sparkData2 = ref({
-  /* Propiedades del componente */
-  title: "VIEWS",
-  value: "1982",
+  title: "CPU USAGE",
+  value: "65%",
   bgColor: "gradient-pink",
   textColor: "white",
-  iconName: "eye-outline",
-  /* Propiedades del componentes interno de ApexChart */
+  iconName: "hardware-chip-outline",
   chartOptions: {
     chart: {
-      id: "views",
+      id: "cpuUsage",
       type: "bar",
       sparkline: { enabled: true },
       dropShadow: { enabled: true, top: 1, left: 1, blur: 2, opacity: 0.5 },
@@ -153,23 +149,21 @@ const sparkData2 = ref({
     tooltip: {
       theme: "dark",
       x: { show: false },
-      y: { title: { formatter: () => "" } },
+      y: { title: { formatter: () => "%" } },
     },
   },
-  chartSeries: [{ data: [25, 66, 41, 59, 25, 44, 12, 36, 9, 21] }],
+  chartSeries: [{ data: [65, 68, 62, 64, 66, 63, 67, 65, 64, 65] }],
 });
 
 const sparkData3 = ref({
-  /* Propiedades del componente */
-  title: "LEADS",
-  value: "2011",
+  title: "TASA DE ÉXITO",
+  value: "98.5%",
   bgColor: "gradient-orange",
   textColor: "white",
-  iconName: "people-outline",
-  /* Propiedades del componentes interno de ApexChart */
+  iconName: "checkmark-circle-outline",
   chartOptions: {
     chart: {
-      id: "leads",
+      id: "successRate",
       type: "line",
       sparkline: { enabled: true },
       dropShadow: { enabled: true, top: 1, left: 1, blur: 2, opacity: 0.5 },
@@ -179,10 +173,12 @@ const sparkData3 = ref({
     tooltip: {
       theme: "dark",
       x: { show: false },
-      y: { title: { formatter: () => "" } },
+      y: { title: { formatter: () => "%" } },
     },
   },
-  chartSeries: [{ data: [25, 66, 41, 59, 25, 44, 12, 36, 9, 21] }],
+  chartSeries: [
+    { data: [98.5, 98.2, 98.7, 98.4, 98.6, 98.3, 98.5, 98.4, 98.6, 98.5] },
+  ],
 });
 
 // Data: ApexLineRT - Series
