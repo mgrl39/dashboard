@@ -12,32 +12,35 @@ import VEChart from "vue-echarts";
 
 use([GaugeChart, CanvasRenderer, TooltipComponent, TitleComponent]);
 
-// Props ✨
-const props = withDefaults(
-  defineProps<{
-    segments: {
-      value: number;
-      name?: string;
-      color?: string;
-    }[];
-  }>(),
+// Datos actualizados
+const segments = [
   {
-    segments: () => [
-      { value: 50, name: "Segmento 1", color: "#3b82f6" },
-      { value: 70, name: "Segmento 2", color: "#10b981" },
-    ],
-  }
-);
+    value: 65, // porcentaje de uso de memoria
+    name: "Uso de Memoria (%)",
+    unit: "%",
+    color: "#f59e0b",
+  },
+  {
+    value: 2.5, // tiempo de carga real en segundos
+    name: "Tiempo de Carga (s)",
+    unit: "s",
+    color: "#10b981",
+  },
+];
 
-// Configuración del gráfico
 const chartOptions = computed(() => ({
   title: {
-    text: "Procedencia",
+    text: "Relación: Uso de Recursos vs Carga Inicial",
     padding: 20,
     textStyle: {
       color: "#8C8C8C",
       fontWeight: "bolder",
-      fontSize: 16,
+      fontSize: 15,
+    },
+    subtext: "Reducir memoria y CPU ayuda a mejorar el tiempo de carga (<3s)",
+    subtextStyle: {
+      color: "#aaaaaa",
+      fontSize: 12,
     },
   },
   series: [
@@ -46,7 +49,6 @@ const chartOptions = computed(() => ({
       startAngle: 90,
       endAngle: -270,
       pointer: { show: false },
-
       progress: {
         show: true,
         overlap: false,
@@ -67,37 +69,38 @@ const chartOptions = computed(() => ({
       axisTick: { show: false },
       axisLabel: { show: false },
       title: {
-        fontSize: 14,
+        fontSize: 13,
         color: "#8C8C8C",
       },
       detail: {
-        width: 50,
-        height: 14,
+        width: 60,
+        height: 18,
         fontSize: 16,
         color: "inherit",
         borderColor: "inherit",
         borderRadius: 20,
         borderWidth: 1,
-        formatter: "{value} %",
+        formatter: (value: number, index: number) => {
+          const unit = segments[index].unit;
+          return `${value} ${unit}`;
+        },
       },
-      data: props.segments.map((s, i) => {
-        // Calcular posición para distribución uniforme
-        const totalSegments = props.segments.length;
-        const verticalOffset =
-          totalSegments > 1 ? -40 + (i * 80) / (totalSegments - 1) : 0;
-
+      data: segments.map((s, i) => {
+        const total = segments.length;
+        const offsetY = total > 1 ? -40 + (i * 80) / (total - 1) : 0;
         return {
           value: s.value,
-          name: s.name || `Segmento ${i + 1}`,
+          name: s.name,
           title: {
-            offsetCenter: ["0%", `${verticalOffset - 10}%`],
+            offsetCenter: ["0%", `${offsetY - 10}%`],
           },
           detail: {
-            offsetCenter: ["0%", `${verticalOffset + 15}%`],
+            offsetCenter: ["0%", `${offsetY + 15}%`],
             color: "#ffffff",
+            formatter: `{value} ${s.unit}`,
           },
           itemStyle: {
-            color: s.color ?? "#4caf50",
+            color: s.color,
           },
         };
       }),
