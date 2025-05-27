@@ -161,14 +161,25 @@ const smartGoals = ref<SmartGoal[]>([
     id: 4,
     title: "Diversidad Musical",
     description:
-      "Mantener una diversidad de géneros musicales donde ningún género supere el 30% de las votaciones totales durante el curso escolar, mediante la implementación de cuotas por género.",
+      "Mantener una distribución equilibrada de géneros musicales donde ningún género supere el 25% de diferencia respecto a la media durante el curso escolar, fomentando la variedad mediante recomendaciones personalizadas.",
     smart: [
-      { letter: "S", content: "Mantener diversidad de géneros musicales" },
-      { letter: "M", content: "Ningún género debe superar el 30%" },
-      { letter: "A", content: "Implementando sistema de cuotas por género" },
+      {
+        letter: "S",
+        content: "Mantener distribución equilibrada de géneros musicales",
+      },
+      {
+        letter: "M",
+        content: "Máximo 25% de diferencia entre géneros respecto a la media",
+      },
+      {
+        letter: "A",
+        content:
+          "Implementando sistema de recomendaciones personalizadas por género",
+      },
       {
         letter: "R",
-        content: "Para asegurar variedad musical y satisfacción general",
+        content:
+          "Para asegurar variedad musical y representación de todos los estilos",
       },
       { letter: "T", content: "Durante todo el curso escolar" },
     ],
