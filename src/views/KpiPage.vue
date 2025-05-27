@@ -43,7 +43,7 @@
       <h1 class="ion-padding">📈 KPIs Técnicos</h1>
       <ion-accordion-group expand="inset" :multiple="true">
         <ion-accordion
-          v-for="item in smartGoals"
+          v-for="item in technicalGoals"
           :key="item.id"
           :value="item.id.toString()"
         >
@@ -97,95 +97,201 @@ interface SmartGoal {
   smart: SmartElement[];
 }
 
-// Array de objetivos SMART
+// Array de objetivos SMART de negocio
 const smartGoals = ref<SmartGoal[]>([
   {
     id: 1,
-    title: "Aumentar visitas",
+    title: "Participación en Votaciones",
     description:
-      "Aumentar las visitas de nuestro sitio web en un 50% (de 1000 a 1500) en los siguientes 30 días, al duplicar la distribución de contenido y con el fin de prepararnos para el lanzamiento de nuestro nuevo producto",
+      "Alcanzar un 80% de participación diaria en las votaciones de canciones en los próximos 3 meses, implementando notificaciones y recordatorios para aumentar el engagement de los estudiantes.",
     smart: [
       {
         letter: "S",
-        content: "Aumentar las visitas de nuestro sitio web en un 50%",
+        content: "Aumentar la participación diaria en votaciones",
       },
-      { letter: "M", content: "50% (de 1,000 a 1,500)" },
-      { letter: "A", content: "duplicando la distribución de contenido" },
+      { letter: "M", content: "Alcanzar el 80% de participación" },
+      {
+        letter: "A",
+        content: "Implementando sistema de notificaciones y recordatorios",
+      },
       {
         letter: "R",
         content:
-          "para prepararnos para el lanzamiento de nuestro nuevo producto.",
+          "Para mejorar el engagement y la experiencia musical del centro",
       },
-      { letter: "T", content: "en los siguientes 30 días" },
+      { letter: "T", content: "En los próximos 3 meses" },
     ],
   },
   {
     id: 2,
-    title: "Aumentar ventas",
+    title: "Crecimiento de Usuarios Activos",
     description:
-      "Aumentar las ventas en un 20% (de $200,000 a $240,000) en los próximos 12 meses, ofreciendo nuestros nuevos productos a los clientes existentes.",
+      "Aumentar el número de usuarios activos en un 10% mensualmente durante el próximo semestre, mediante la implementación de un sistema de recompensas y gamificación.",
     smart: [
-      { letter: "S", content: "Aumentar las ventas en un 20%" },
-      { letter: "M", content: "20% (de $200,000 a $240,000)" },
+      { letter: "S", content: "Incrementar usuarios activos mensuales" },
+      { letter: "M", content: "10% de incremento mensual" },
       {
         letter: "A",
-        content:
-          "ofreciendo nuestros nuevos productos a los clientes existentes",
+        content: "Implementando sistema de recompensas y gamificación",
       },
-      { letter: "R", content: "(retención de clientes y aumentar ventas)" },
-      { letter: "T", content: "próximos 12 meses" },
+      { letter: "R", content: "Para mantener el compromiso de la comunidad" },
+      { letter: "T", content: "Durante el próximo semestre" },
     ],
   },
   {
     id: 3,
-    title: "Ampliar equipo de marketing",
+    title: "Logros de Usuario",
     description:
-      "Ampliar el equipo de marketing en un 10% (de 100 a 110 empleados) para finales del primer trimestre del próximo año, al contratar 3 empleados cada 3 meses para completar el equipo de creación de contenido.",
+      "Lograr que el 70% de los usuarios tengan al menos 3 logros en los próximos 2 meses, mediante la introducción de nuevos desafíos semanales y recompensas especiales.",
     smart: [
-      { letter: "S", content: "Ampliar el equipo de marketing en un 10%" },
-      { letter: "M", content: "10% (de 100 a 110 empleados)" },
-      { letter: "A", content: "contratando a 3 empleados cada 3 meses" },
+      { letter: "S", content: "Aumentar usuarios con 3 o más logros" },
+      { letter: "M", content: "70% de usuarios con 3+ logros" },
+      {
+        letter: "A",
+        content: "Introduciendo desafíos semanales y recompensas",
+      },
       {
         letter: "R",
-        content: "para completar el equipo de creación de contenido",
+        content: "Para incrementar la participación y engagement",
       },
-      {
-        letter: "T",
-        content: "para finales del primer trimestre del próximo año",
-      },
+      { letter: "T", content: "En los próximos 2 meses" },
     ],
   },
   {
     id: 4,
-    title: "Alianzas estratégicas",
+    title: "Diversidad Musical",
     description:
-      "Crear 10 alianzas estratégicas en el próximo bienio por medio de la organización de foros, y así obtener más exposición de marca y mejorar la red de proveedores.",
+      "Mantener una diversidad de géneros musicales donde ningún género supere el 30% de las votaciones totales durante el curso escolar, mediante la implementación de cuotas por género.",
     smart: [
-      { letter: "S", content: "Crear alianzas estratégicas" },
-      { letter: "M", content: "10 alianzas estratégicas" },
-      { letter: "A", content: "por medio de la organización de foros" },
+      { letter: "S", content: "Mantener diversidad de géneros musicales" },
+      { letter: "M", content: "Ningún género debe superar el 30%" },
+      { letter: "A", content: "Implementando sistema de cuotas por género" },
       {
         letter: "R",
-        content:
-          "obtener más exposición de marca y mejorar la red de proveedores",
+        content: "Para asegurar variedad musical y satisfacción general",
       },
-      { letter: "T", content: "en 2 años" },
+      { letter: "T", content: "Durante todo el curso escolar" },
     ],
   },
   {
     id: 5,
-    title: "Leads calificados",
+    title: "Conexiones Sociales",
     description:
-      "Aumentar la cantidad de leads calificados de 300 a 3000 en un período de 6 meses con la creación de 5 nuevas ofertas de contenido.",
+      "Conseguir que el 60% de los usuarios sigan a otros usuarios en la plataforma en los próximos 4 meses, mediante la implementación de sugerencias de usuarios y destacando perfiles activos.",
     smart: [
-      { letter: "S", content: "Aumentar la cantidad de leads calificados" },
-      { letter: "M", content: "de 300 a 3000" },
+      { letter: "S", content: "Aumentar conexiones entre usuarios" },
+      { letter: "M", content: "60% de usuarios siguiendo a otros" },
       {
         letter: "A",
-        content: "con la creación de 5 nuevas ofertas de contenido",
+        content: "Implementando sugerencias y destacando perfiles activos",
       },
-      { letter: "R", content: "(aumentar las posibilidades de venta)" },
-      { letter: "T", content: "en un período de 6 meses" },
+      { letter: "R", content: "Para crear una comunidad más conectada" },
+      { letter: "T", content: "En los próximos 4 meses" },
+    ],
+  },
+]);
+
+// Array de objetivos SMART técnicos
+const technicalGoals = ref<SmartGoal[]>([
+  {
+    id: 6,
+    title: "Tiempo de Respuesta del Servidor",
+    description:
+      "Monitorizar el tiempo de respuesta del servidor y mantenerlo por debajo de los 200 ms en el 95% de las peticiones durante los próximos 2 meses.",
+    smart: [
+      { letter: "S", content: "Reducir el tiempo de respuesta del servidor" },
+      {
+        letter: "M",
+        content: "Por debajo de los 200 ms en el 95% de las peticiones",
+      },
+      {
+        letter: "A",
+        content: "Optimizando el backend y aplicando cache local",
+      },
+      {
+        letter: "R",
+        content: "Para mejorar la experiencia de usuario",
+      },
+      { letter: "T", content: "En los próximos 2 meses" },
+    ],
+  },
+  {
+    id: 7,
+    title: "Errores de Autenticación",
+    description:
+      "Reducir los errores de autenticación un 20% mensual mediante mejoras en el sistema de login y detección temprana de errores.",
+    smart: [
+      { letter: "S", content: "Reducir errores de autenticación" },
+      { letter: "M", content: "Reducción del 20% mensual" },
+      {
+        letter: "A",
+        content: "Implementando logs detallados y alertas automáticas",
+      },
+      {
+        letter: "R",
+        content: "Para garantizar accesos seguros y sin fallos",
+      },
+      { letter: "T", content: "Durante cada mes" },
+    ],
+  },
+  {
+    id: 8,
+    title: "Uso de Memoria y CPU",
+    description:
+      "Mantener el uso de CPU y memoria por debajo del 70% de la capacidad máxima durante todo el trimestre mediante optimización del frontend.",
+    smart: [
+      { letter: "S", content: "Reducir el uso de memoria y CPU" },
+      { letter: "M", content: "Mantener por debajo del 70%" },
+      {
+        letter: "A",
+        content: "Optimizando recursos y limitando procesos innecesarios",
+      },
+      {
+        letter: "R",
+        content: "Para asegurar estabilidad del sistema",
+      },
+      { letter: "T", content: "Durante todo el trimestre" },
+    ],
+  },
+  {
+    id: 9,
+    title: "Tasa de Éxito en Votaciones",
+    description:
+      "Lograr una tasa de éxito del 98% en las votaciones completadas respecto a las iniciadas durante los próximos 3 meses.",
+    smart: [
+      {
+        letter: "S",
+        content: "Aumentar la tasa de éxito de las votaciones completadas",
+      },
+      { letter: "M", content: "98% de éxito en transacciones" },
+      {
+        letter: "A",
+        content: "Detectando y corrigiendo errores de envío en frontend",
+      },
+      {
+        letter: "R",
+        content: "Para garantizar la fiabilidad del sistema de votación",
+      },
+      { letter: "T", content: "En los próximos 3 meses" },
+    ],
+  },
+  {
+    id: 10,
+    title: "Tiempo de Carga de la Aplicación",
+    description:
+      "Mantener el tiempo de carga inicial de la aplicación por debajo de 3 segundos en el 90% de las sesiones durante los próximos 2 meses.",
+    smart: [
+      { letter: "S", content: "Reducir el tiempo de carga inicial" },
+      { letter: "M", content: "Menos de 3 segundos en el 90% de sesiones" },
+      {
+        letter: "A",
+        content: "Mediante carga diferida de componentes y recursos",
+      },
+      {
+        letter: "R",
+        content: "Para mejorar el acceso rápido a la app",
+      },
+      { letter: "T", content: "Durante los próximos 2 meses" },
     ],
   },
 ]);
