@@ -18,26 +18,7 @@
 
       <!-- Grid principal del Dashboard -->
       <ion-grid class="dashboard-grid">
-        <!-- 🟢 Fila 1: 3 Columnas -->
-        <ion-row class="ion-row-1">
-          <ion-col size="12" size-lg="4">
-            <div class="box">
-              <spark-line v-bind="sparkData1" />
-            </div>
-          </ion-col>
-          <ion-col size="6" size-lg="4">
-            <div class="box">
-              <spark-line v-bind="sparkData2" />
-            </div>
-          </ion-col>
-          <ion-col size="6" size-lg="4">
-            <div class="box">
-              <spark-line v-bind="sparkData3" />
-            </div>
-          </ion-col>
-        </ion-row>
-
-        <!-- 🔵 Fila 2: 2 Columnas -->
+        <!-- 🔵 Fila 1: ApexLineRT + Gauge -->
         <ion-row class="ion-row-2">
           <ion-col size="12" size-md="3" push-md="9">
             <div class="box">
@@ -56,11 +37,35 @@
           </ion-col>
         </ion-row>
 
-        <!-- 🟠 Fila 3: 3 Columnas -->
+        <!-- 🟢 Fila 2: SparkLines -->
+        <ion-row class="ion-row-1">
+          <ion-col size="12" size-lg="4">
+            <div class="box">
+              <spark-line v-bind="sparkData1" />
+            </div>
+          </ion-col>
+          <ion-col size="6" size-lg="4">
+            <div class="box">
+              <spark-line v-bind="sparkData2" />
+            </div>
+          </ion-col>
+          <ion-col size="6" size-lg="4">
+            <div class="box">
+              <spark-line v-bind="sparkData3" />
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- 🟠 Fila 3: Gauge múltiple + Doughnut -->
         <ion-row class="ion-row-3">
-          <ion-col size="12" size-lg="12">
+          <ion-col size="12" size-lg="8">
             <div class="box">
               <EchartsGaugeMultiple :segments="ringSegments" />
+            </div>
+          </ion-col>
+          <ion-col size="12" size-lg="4">
+            <div class="box">
+              <ChartDoughnut />
             </div>
           </ion-col>
         </ion-row>
@@ -84,29 +89,18 @@ import {
 } from "@ionic/vue";
 import { ref, onMounted, onUnmounted } from "vue";
 
-// Sparkline
 import SparkLine from "@/components/SparkLine.vue";
-
-// ApexLineChart Realtime
 import ApexLineRT from "@/components/ApexLineRT.vue";
-
-// Echarts
 import EchartsGauge from "@/components/EchartsGauge.vue";
 import EchartsGaugeMultiple from "@/components/EchartsGaugeMultiple.vue";
+import ChartDoughnut from "@/components/ChartDoughnut.vue";
 
-/***** 🛠️ CONSTANTES y VARIABLES *****/
-
-// Constantes
 const UPDATE_INTERVAL = 1000;
-const MAX_DATA_POINTS = 60; // Límitar nº puntos del gráfico para mejor rendimiento (ApexLineRT)
+const MAX_DATA_POINTS = 60;
 
-// Variables
 let lastDate = Date.now();
 let interval: ReturnType<typeof setInterval>;
 
-/***** 🗃️ DATA *****/
-
-// Data: SparkLine
 const sparkData1 = ref({
   title: "TIEMPO RESPUESTA",
   value: "178ms",
@@ -181,43 +175,33 @@ const sparkData3 = ref({
   ],
 });
 
-// Data: ApexLineRT - Series
 const data = ref<{ x: number; y: number }[]>([]);
 const series = ref([{ name: "Usuarios", data: data.value }]);
 
-// Data: ECharts - Gauge Simple: Valor inicial
 const currentValue = ref(0);
-
-// Data: Echarts - Gauge Múltiple: Valores iniciales
 const ringSegments = ref([
   { value: 0, name: "🥘 España", color: "#f97316", min: 80, max: 99 },
   { value: 0, name: "🌍 Mundo", color: "#10b981", min: 10, max: 30 },
 ]);
 
-/***** 🧠 LÓGICA REALTIME *****/
 function addDataRealTime() {
   const newX = lastDate + UPDATE_INTERVAL;
   const newY = Math.floor(Math.random() * 90) + 10;
   data.value.push({ x: newX, y: newY });
 
-  // ApexLineRT - Cuidar uso de memoria
   if (data.value.length > MAX_DATA_POINTS) {
     data.value = data.value.slice(-2);
-    series.value = [{ name: "Usuarios", data: data.value }]; // Asegúra que ApexCharts recoja el cambio
+    series.value = [{ name: "Usuarios", data: data.value }];
   }
 
   lastDate = newX;
-
-  // ECharts - Gauge simple: nuevo valor
   currentValue.value = newY;
 
-  // Echarts - Gauge múltiple: nuevo valor para cada segmento
   ringSegments.value.forEach((s) => {
     s.value = Math.floor(Math.random() * (s.max - s.min + 1)) + s.min;
   });
 }
 
-/***** 🔄 CICLO DE VIDA *****/
 onMounted(() => {
   interval = setInterval(addDataRealTime, UPDATE_INTERVAL);
 });
@@ -237,7 +221,6 @@ ion-col {
   --ion-grid-column-padding: 10px;
 }
 
-/* El contenido real de cada columna */
 .box {
   background: #561524;
   height: 100%;
@@ -249,13 +232,11 @@ ion-col {
   align-items: start;
 }
 
-/* Estilos base para el contenido */
 ion-content {
   --background: #38101a;
   --color: #f4f4f4;
 }
 
-/* Estilos para el header */
 ion-header {
   background: #38101a;
 }
@@ -265,17 +246,14 @@ ion-toolbar {
   --color: #f4f4f4;
 }
 
-/* Estilos para los botones del menú */
 ion-menu-button {
   --color: #f4f4f4;
 }
 
-/* Estilos para el título */
 ion-title {
   color: #f4f4f4;
 }
 
-/* Aplicar altura total y por filas, solo en pantallas ≥ lg */
 @media (min-width: 992px) {
   ion-grid {
     height: 100%;
